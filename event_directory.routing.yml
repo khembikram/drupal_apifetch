@@ -1,0 +1,15 @@
+event_directory.listing:
+  path: '/event-listing'
+  defaults:
+    _controller: '\Drupal\event_directory\Controller\EventListing::view'
+    _title: 'Event Listing'
+  requirements:
+    _permission: 'access content'
+
+event_directory.event_details:
+  path: '/event-details'
+  defaults:
+    _controller: '\Drupal\event_directory\Controller\EventListing::build'
+    _title: 'Event Details'
+  requirements:
+    _permission: 'access content'

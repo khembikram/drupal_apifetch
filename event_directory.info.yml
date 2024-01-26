@@ -1,0 +1,5 @@
+name: Event Directory
+description: Allow users to search for upcomming events 
+package: CustomModules
+type: module
+core_version_requirement: ^9.4 || ^10

@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * @file
+ */
+
+/**
+ * Implementation of hook_theme().
+ */
+function event_directory_theme($existing, $type, $theme, $path) {
+  return [
+    'event-listing' => [
+      'variables' => ['items' => []],
+      'template' => 'event-listing',
+    ],
+    'event-details' => [
+      'variables' => ['items' => []],
+      'template' => 'event-details',
+    ],
+  ];
+}

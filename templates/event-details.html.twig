@@ -1,0 +1,90 @@
+<div class="card_heading_banner">
+  <div class="card_heading_insider">
+    <div class="card_heading_right">
+      {% for item in items %}
+        {% if loop.first %}
+          {% if item.tag == 'class' %}
+            <h1>Group Classes</h1>
+          {% elseif item.tag == 'workshop and event' %}
+            <h1>Workshops and Events</h1>
+          {% elseif item.tag == 'event' %}
+            <h1>Events</h1>
+          {% elseif item.tag == 'trial' %}
+            <h1>Trial Classes</h1>
+          {% else %}
+            <h1>{{ item.tag }}</h1>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+      <button>View Events ↓ </button> 
+    </div>
+    <div class="img_div">
+      {% if items|length > 0 and items[0].image is defined and items[0].image is not empty %}
+        <img src="{{ items[0].image }}" height="500px" id="card_banenr_img">
+      {% else %}
+        <img src="  " height="500px" id="card_banenr_img"> // placeholder image for empty case
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<div class="card-parent">
+  <div class="card-main-container">
+    {% for item in items %}
+      {% if item.tag == '' %} // set  tag 
+        {% set url = ' ' %} // setting custom url
+      {% elseif item.tag == '' %}
+        {% set url = '' %}
+      {% else %}
+        {% set url = '' %}
+      {% endif %}
+  
+      <div class="card-container">
+        <div class="card-top">
+          {% if item.image is defined and item.image is not empty %}
+            <a href="{{ url ~ item.id }}">
+              <img src="{{ item.image }}" alt="Event Image" class="event-list-image">
+            </a>
+          {% else %}
+            <img src="" class="event-list-image" /> //placeholder image
+          {% endif %}
+        </div>
+        <div class="card-bottom">
+          <div class="card-wrapper">
+            <div class="card-date">
+              <div class="card-date-month">
+                {{item.date_start_month}}
+              </div>
+              <div class="card-date-date">
+                {{item.date_start_date}}
+              </div>
+            </div>
+            <div class="card-title">
+              <a href="{{ url ~ item.id }}">
+                <h3 class="event-list-title">{{item.name}}</h3>
+              </a>
+              <p class="description">{{ item.location_address }}</p>
+              
+              <div class="event_pricing_time">
+                <a href="{{ url ~ item.id }}"> 
+                  <p class="event-time">{{item.time_start}} - {{item.time_end}}</p>
+                </a>
+                <div class="card_seperator">
+                |
+                </div>
+                <div class="card_ticket_price" >
+                  £ {{item.ticket}}
+                </div>
+              </div>
+            <button id="event-details-redirection" type="button">
+            <a href="{{ url ~ item.id }}" target="_blank">
+              Book Now
+            </a>
+          </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
